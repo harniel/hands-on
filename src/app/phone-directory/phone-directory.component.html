@@ -1,0 +1,91 @@
+<div class="content">
+  <div class="toolbar center" role="banner">
+    <img width="40" alt="oracle" src="../assets/images/logo.PNG" />
+    <span style="margin-left: 5px">{{ title }}</span>
+  </div>
+
+  <form
+    (ngSubmit)="addCustomer()"
+    #phoneDirForm="ngForm"
+    style="
+      display: flex;
+      justify-content: space-evenly;
+      margin: 82px auto auto;
+      max-width: 750px;
+    "
+  >
+    <div>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        pattern="^[A-Za-z ]{1,20}$"
+        [(ngModel)]="newContact.name"
+        placeholder="Contact Name"
+      />
+    </div>
+    <div>
+      <input
+        type="tel"
+        id="mobile"
+        name="mobile"
+        required
+        pattern="^[0-9]{10}$"
+        [(ngModel)]="newContact.mobile"
+        placeholder="Mobile Number"
+      />
+    </div>
+    <div>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        pattern="^[a-zA-Z][a-zA-Z0-9.]{1,10}@[a-zA-Z]{2,20}\.[a-zA-Z]{2,10}$"
+        [(ngModel)]="newContact.email"
+        placeholder="Email"
+      />
+    </div>
+
+    <button class="btn btn-success" type="submit">Add Customer</button>
+  </form>
+  <div
+    id="error"
+    data-testid="error"
+    style="display: none; color: red; margin: 10px auto auto; width: 10%"
+  >
+    Invalid Input!
+  </div>
+  <div
+    style="
+      margin: 40px auto auto;
+      width: 80%;
+      box-shadow: 1px 1px 10px #888;
+      padding: 20px 0px 30px 0px;
+      border: 1px solid rgb(184, 184, 184);
+    "
+  >
+    <h5
+      style="
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-left: 20px;
+      "
+    >
+      Contacts Summary
+    </h5>
+    <table style="border: 0cap; border-radius: 3%">
+      <tr>
+        <th>Name</th>
+        <th>Mobile</th>
+        <th>Email</th>
+      </tr>
+      <tr *ngFor="let contact of contacts">
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.mobile }}</td>
+        <td>{{ contact.email }}</td>
+      </tr>
+    </table>
+  </div>
+</div>

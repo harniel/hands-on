@@ -1,0 +1,41 @@
+<div class="toolbar center" role="banner">
+  <img width="40" alt="oracle" src="../assets/images/logo.PNG" />
+  <span style="margin-left: 5px">{{ title }}</span>
+</div>
+
+<form #customerForm="ngForm">
+  <div class="center form" role="main">
+    <div style="background-color: #125699; width: auto">
+      <input
+        class="col-xs-4 col-sm-12 col-md-12"
+        style="margin-right: 2"
+        type="text"
+        [(ngModel)]="customerForm.value.input"
+        name="input"
+        placeholder="Name"
+      />
+    </div>
+    <div style="background-color: #888">
+      <button class="btn btn-success" (click)="addCustomer(customerForm)">
+        Add Customer
+      </button>
+    </div>
+  </div>
+  <div
+    style="
+      display: flex;
+      margin: 3px auto auto;
+      align-items: center;
+      max-width: 300px;
+      /* background-color: rgb(208, 204, 204); */
+    "
+  >
+    <ul
+      style="list-style-type: disc"
+      data-test-id="customer-list"
+      *ngIf="customers.length > 0"
+    >
+      <li *ngFor="let input of customers">{{ input }}</li>
+    </ul>
+  </div>
+</form>
